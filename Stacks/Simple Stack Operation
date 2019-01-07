@@ -1,0 +1,74 @@
+#include<bits/stdc++.h>
+#define MAX 5 
+using namespace std; 
+int STACK[MAX],TOP;
+ 
+void push(int num)
+{
+    if(TOP==MAX-1)								// check if stack is full or not
+	{
+        cout<<"STACK is FULL."<<endl;
+        return; 
+    }
+    TOP++;
+    STACK[TOP]=num;
+    cout<<num<<" has been inserted."<<endl;
+}
+ 
+void display()
+{
+    if(TOP==-1)									// Check if stack is empty or not
+	{
+        cout<<"STACK is EMPTY."<<endl;
+        return;
+    }
+    for(int i=TOP;i>=0;i--)
+        cout<<STACK[i]<<" ";
+    cout<<endl;
+}
+ 
+void pop()
+{
+    if(TOP==-1)
+	{
+        cout<<"STACK is EMPTY."<<endl;
+        return;
+    }  
+    int temp=STACK[TOP];
+    TOP--;
+    cout<<temp<<" has been deleted."<<endl;   
+}
+
+int main()
+{
+    int num;
+    TOP=-1;
+    char ch;
+    do{
+            cout<<"Chosse \n1.push\n"<<"2.pop\n"<<"3.display\n";
+            cout<<"Please enter your choice: ";
+            int a;
+			cin>>a;
+            switch(a)
+            {
+                case 1:
+                    cout<<"Enter an Integer Number: ";
+                    cin>>num;
+                    push(num);
+                break;
+                 
+                case 2: 
+                    pop();
+                    break;
+                 
+                case 3: 
+                    display();
+                    break;
+                 
+                default : cout<<"An Invalid Choice!!!\n";     
+            }
+            cout<<"Do you want to continue ? ";
+            cin>>ch;                      
+            }while(ch=='Y'||ch=='y');
+    return 0;
+}
